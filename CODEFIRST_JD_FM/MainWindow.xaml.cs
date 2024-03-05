@@ -77,10 +77,8 @@ namespace CODEFIRST_JD_FM
             }
             else if (cbSelects.SelectedIndex == 6)
             {
-                //Falta passar paràmetre bé
-                int employeeNumber = Convert.ToInt32(txtSelects.Text);
-                List<Object> customersEmployee = manager.ListCustomersByEmployeeNumber(employeeNumber);
-                dgList.ItemsSource = customersEmployee;
+                tbWarning.Visibility = Visibility.Visible;
+                btnListCustomersByEmployeeNumber.Visibility = Visibility.Visible;
             }
             else if (cbSelects.SelectedIndex == 7)
             {
@@ -89,10 +87,8 @@ namespace CODEFIRST_JD_FM
             }
             else if (cbSelects.SelectedIndex == 8)
             {
-                //Falta passar paràmetre bé
-                string productLineName = txtSelects.Text;
-                List<Object> mostSoldProductLine = manager.ListProductsByProductLine(productLineName);
-                dgList.ItemsSource = mostSoldProductLine;
+                tbWarning.Visibility = Visibility.Visible;
+                btnListProductsByProductLine.Visibility = Visibility.Visible;
             }
             else if (cbSelects.SelectedIndex == 9)
             {
@@ -100,5 +96,25 @@ namespace CODEFIRST_JD_FM
                 dgList.ItemsSource = totalSalesByOffice;
             }
         }
+
+        private void btnListCustomersByEmployeeNumber_Click(object sender, RoutedEventArgs e)
+        {
+            int employeeNumber = Convert.ToInt32(txtSelects.Text);
+            List<Object> customersEmployee = manager.ListCustomersByEmployeeNumber(employeeNumber);
+            dgList.ItemsSource = customersEmployee;
+            btnListCustomersByEmployeeNumber.Visibility = Visibility.Hidden;
+            txtSelects.Text = "";
+            tbWarning.Visibility = Visibility.Hidden;
         }
+
+        private void btnListProductsByProductLine_Click(object sender, RoutedEventArgs e)
+        {
+            string productLineName = txtSelects.Text;
+            List<Object> mostSoldProductLine = manager.ListProductsByProductLine(productLineName);
+            dgList.ItemsSource = mostSoldProductLine;    
+            btnListProductsByProductLine.Visibility = Visibility.Hidden;
+            txtSelects.Text = "";
+            tbWarning.Visibility = Visibility.Hidden;
+        }
+    }
 }
