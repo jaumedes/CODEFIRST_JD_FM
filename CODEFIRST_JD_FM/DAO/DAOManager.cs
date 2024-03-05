@@ -594,5 +594,51 @@ namespace CODEFIRST_JD_FM.DAO
             return query;
         }
 
+
+        public List<Object> ListSellsPerProduct()
+        {
+            var query = dbContext.Products
+                .Join(dbContext.OrderDetails,
+                    product => product.productCode,
+                    orderDetail => orderDetail.productCode,
+                    (product, orderDetail) => new { Product = product, OrderDetail = orderDetail })
+                .GroupBy(x => x.Product.productName)
+                .Select(group => new
+                {
+                    ProductName = group.Key,
+                    TotalQuantity = group.Sum(x => x.OrderDetail.quantityOrdered),
+                    TotalSales = group.Sum(x => x.OrderDetail.quantityOrdered * x.OrderDetail.priceEach)
+                })
+                .ToList<Object>();
+
+            return query;
+        }
+
+
+        public List<Object> ListInProcessORInPendingOrders()
+        {
+            var query = dbContext.Customers
+                .Join(dbContext.Orders,
+                    c => c.customerNumber,
+                    o => o.customerNumber,
+                    (c, o) => new { Customer = c, Order = o })
+                .Join(dbContext.OrderDetails,
+                    customerOrders => customerOrders.Order.orderNumber,
+                    od => od.orderNumber,
+                    (customerOrders, od) => new { customerOrders = customerOrders, OrderDetail = od })
+                .Where(x => x.customerOrders.Order.status == "In Process" || x.customerOrders.Order.status == "Pending")
+                .GroupBy(x => new { x.customerOrders.Customer.customerName, x.customerOrders.Order.orderNumber, x.customerOrders.Order.orderDate })
+                .Select(group => new
+                {
+                    CustomerName = group.Key.customerName,
+                    OrderNumber = group.Key.orderNumber,
+                    OrderDate = group.Key.orderDate,
+                    Amount = group.Sum(x => x.OrderDetail.quantityOrdered * x.OrderDetail.priceEach)
+                })
+                .ToList<Object>();
+
+            return query;
+        }
+
     }
 }
