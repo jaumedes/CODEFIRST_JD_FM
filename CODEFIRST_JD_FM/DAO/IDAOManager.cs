@@ -26,5 +26,8 @@ namespace CODEFIRST_JD_FM.DAO
         public List<Object> ListMostSoldProductLine();
         public List<Object> ListProductsByProductLine(string productLineName);
         public List<Object> ListTotalSalesByOffice();
+        public List<Object> ListSellsPerProduct();
+        public List<Object> ListInProcessORInPendingOrders();
+
     }
 }
