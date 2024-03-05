@@ -375,7 +375,7 @@ namespace CODEFIRST_JD_FM.DAO
                         salesRepEmployee = employee.lastName + " " + employee.firstName
                     })
                 .ToList<Object>(); // Convertimos la lista a tipo Object
-
+            
             return customers;
         }
 
@@ -399,7 +399,7 @@ namespace CODEFIRST_JD_FM.DAO
                     {
                         CustomerName = group.Key.CustomerName,
                         ContactLastName = group.Key.ContactLastName,
-                        TotalAmount = group.Sum(entry => entry.Amount)
+                        TotalAmount = Math.Round( group.Sum(entry => entry.Amount), 2)
                     })
                     .ToList<Object>();
 
@@ -586,7 +586,7 @@ namespace CODEFIRST_JD_FM.DAO
                 {
                     OfficeCode = group.Key.officeCode,
                     City = group.Key.city,
-                    TotalSales = group.Sum(x => x.TotalSales)
+                    TotalSales = Math.Round(group.Sum(x => x.TotalSales), 2)
                 })
                 .OrderByDescending(x => x.TotalSales)
                 .ToList<Object>();
@@ -594,7 +594,7 @@ namespace CODEFIRST_JD_FM.DAO
             return query;
         }
 
-
+        
         public List<Object> ListSellsPerProduct()
         {
             var query = dbContext.Products
@@ -607,7 +607,7 @@ namespace CODEFIRST_JD_FM.DAO
                 {
                     ProductName = group.Key,
                     TotalQuantity = group.Sum(x => x.OrderDetail.quantityOrdered),
-                    TotalSales = group.Sum(x => x.OrderDetail.quantityOrdered * x.OrderDetail.priceEach)
+                    TotalSales = Math.Round(group.Sum(x => x.OrderDetail.quantityOrdered * x.OrderDetail.priceEach),2)
                 })
                 .ToList<Object>();
 

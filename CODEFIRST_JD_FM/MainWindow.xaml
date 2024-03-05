@@ -70,7 +70,8 @@
             </StackPanel>
 
             <DataGrid Name="dgList" Grid.Row="1" AutoGenerateColumns="True" 
-                      IsReadOnly="True" HorizontalScrollBarVisibility="Visible" ColumnWidth="120">
+                      IsReadOnly="True" HorizontalScrollBarVisibility="Visible" ColumnWidth="120"
+                      >
                 
             </DataGrid>
         </Grid>
