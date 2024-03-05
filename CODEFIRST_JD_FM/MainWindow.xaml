@@ -35,19 +35,19 @@
                 
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Name="cbSelects" SelectionChanged="cbSelects_SelectionChanged"  Width="300">
-                        <ComboBoxItem Content="List all Customers"/>
-                        <ComboBoxItem Content="List total amount paid in 2003 by customers"/>
-                        <ComboBoxItem Content="List Customers that work in France Offices"/>
-                        <ComboBoxItem Content="List Customer that have bought a 1969 FordFalcon"/>
-                        <ComboBoxItem Content="List Customer Credit superior 3000000"/>
-                        <ComboBoxItem Content="List Employees who sold an helicopter"/>
-                        <ComboBoxItem Content="List Customers by employee"/>
+                        <ComboBoxItem Content="List of All Customers"/>
+                        <ComboBoxItem Content="List Total Amount Paid in 2003 by Customers"/>
+                        <ComboBoxItem Content="List Customers that Work in France Offices"/>
+                        <ComboBoxItem Content="List Customer that have Bought a 1969 FordFalcon"/>
+                        <ComboBoxItem Content="List Customer Credit Superior 3000000"/>
+                        <ComboBoxItem Content="List Employees who Sold an Helicopter"/>
+                        <ComboBoxItem Content="List Customers by Employee"/>
                         <ComboBoxItem Content="List Most Sold Product Line"/>
                         <ComboBoxItem Content="List Products by Product Line"/>
-                        <ComboBoxItem Content="List total sales by office"/>
-                        <ComboBoxItem Content="List total sells by product"/>
-                        <ComboBoxItem Content="List Pending orders since 2003"/>
-                        <ComboBoxItem Content="List In Process or In Pending orders"/>
+                        <ComboBoxItem Content="List Total Sales by Office"/>
+                        <ComboBoxItem Content="List Total Sales by Product"/>
+                        <ComboBoxItem Content="List Sales per Product"/>
+                        <ComboBoxItem Content="List In Process or In Pending Orders"/>
                     </ComboBox>
 
                     <TextBox Name="txtSelects" Width="300" Margin="10,0,0,0"/>

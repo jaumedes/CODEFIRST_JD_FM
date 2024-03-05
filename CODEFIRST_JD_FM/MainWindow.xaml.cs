@@ -95,8 +95,19 @@ namespace CODEFIRST_JD_FM
                 List<Object> totalSalesByOffice = manager.ListTotalSalesByOffice();
                 dgList.ItemsSource = totalSalesByOffice;
             }
-        }
+            else if (cbSelects.SelectedIndex == 10)
+            {
+                List<Object> sellsPerProduct = manager.ListSellsPerProduct();
+                dgList.ItemsSource = sellsPerProduct;
+            }
+            else if (cbSelects.SelectedIndex == 11)
+            {
+                List<Object> pendingOrders = manager.ListInProcessORInPendingOrders();
+                dgList.ItemsSource = pendingOrders;
+            }
 
+        }
+        //Separats perquè van parametritzats
         private void btnListCustomersByEmployeeNumber_Click(object sender, RoutedEventArgs e)
         {
             int employeeNumber = Convert.ToInt32(txtSelects.Text);
@@ -116,5 +127,7 @@ namespace CODEFIRST_JD_FM
             txtSelects.Text = "";
             tbWarning.Visibility = Visibility.Hidden;
         }
+
+
     }
 }
