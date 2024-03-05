@@ -28,6 +28,5 @@ namespace CODEFIRST_JD_FM.DAO
         public List<Object> ListTotalSalesByOffice();
         public List<Object> ListSellsPerProduct();
         public List<Object> ListInProcessORInPendingOrders();
-
     }
 }

@@ -22,7 +22,17 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Grid.Row="0" Margin="10">
-                <TextBlock Text="SELECTS "/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                        <TextBlock Grid.Column="0" Text="SELECTS "/>
+                        <TextBlock Grid.Column="1" Name="tbWarning" Text="Introduce a value!" Visibility="Hidden"/>
+
+                    </Grid>
+                
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Name="cbSelects" SelectionChanged="cbSelects_SelectionChanged"  Width="300">
                         <ComboBoxItem Content="List all Customers"/>
@@ -31,22 +41,32 @@
                         <ComboBoxItem Content="List Customer that have bought a 1969 FordFalcon"/>
                         <ComboBoxItem Content="List Customer Credit superior 3000000"/>
                         <ComboBoxItem Content="List Employees who sold an helicopter"/>
-                        <ComboBoxItem Content="List CustDomers by employee"/>
+                        <ComboBoxItem Content="List Customers by employee"/>
                         <ComboBoxItem Content="List Most Sold Product Line"/>
                         <ComboBoxItem Content="List Products by Product Line"/>
                         <ComboBoxItem Content="List total sales by office"/>
-
+                        <ComboBoxItem Content="List total sells by product"/>
+                        <ComboBoxItem Content="List Pending orders since 2003"/>
+                        <ComboBoxItem Content="List In Process or In Pending orders"/>
                     </ComboBox>
 
                     <TextBox Name="txtSelects" Width="300" Margin="10,0,0,0"/>
-                    <Button Name="btnSelects" Content="Execute" 
-                            Click="btnSelects_Click" VerticalAlignment="Center"
-                            Width="100" 
-                            Margin="0,10,0,0"
-                            
-                            />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                                                 
+                        <Button Grid.Row="0" Name="btnListCustomersByEmployeeNumber" Margin="0,0,10,0" Content="Execute" 
+                        Click="btnListCustomersByEmployeeNumber_Click"  VerticalAlignment="Center"
+                        Width="100" Visibility="Hidden"                             
+                        />
+                        <Button Grid.Row="0" Name="btnListProductsByProductLine" Margin="0,0,10,0" Content="Execute" 
+                        Click="btnListProductsByProductLine_Click" VerticalAlignment="Center"
+                        Width="100" Visibility="Hidden"                             
+                        />
+                    </Grid>
 
-                </StackPanel>
+                        </StackPanel>
             </StackPanel>
 
             <DataGrid Name="dgList" Grid.Row="1" AutoGenerateColumns="True" 

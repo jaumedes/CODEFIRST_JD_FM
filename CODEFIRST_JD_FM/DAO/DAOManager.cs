@@ -19,6 +19,7 @@ namespace CODEFIRST_JD_FM.DAO
             this.dbContext = context;
         }
 
+        //Mètodes per a importar les dades dels fitxers CSV a la base de dades
         public bool ImportCustomers()
         {
             bool done = false;
@@ -350,7 +351,7 @@ namespace CODEFIRST_JD_FM.DAO
             return done;
         }
 
-
+        //Mètodes per a les consultes
         public List<Object> ListCustomers()
         {
             var customers = dbContext.Customers
@@ -457,38 +458,6 @@ namespace CODEFIRST_JD_FM.DAO
             return query;
         }
 
-        //public List<Object> ListEmployees()
-        //{
-        //    var currentDate = DateTime.Now;
-
-        //    var query = dbContext.Employees
-        //        .Join(dbContext.Customers,
-        //            employee => employee.employeeNumber,
-        //            customer => customer.salesRepEmployeeNumber,
-        //            (employee, customer) => new { Employee = employee, Customer = customer })
-        //        .Join(dbContext.Orders,
-        //            x => x.Customer.customerNumber,
-        //            order => order.customerNumber,
-        //            (x, order) => new { Employee = x.Employee, Order = order })
-        //        .Join(dbContext.OrderDetails,
-        //            x => x.Order.orderNumber,
-        //            orderDetail => orderDetail.orderNumber,
-        //            (x, orderDetail) => new { Employee = x.Employee, QuantityOrdered = orderDetail.quantityOrdered })
-        //        .Where(x => x.Order.OrderDate >= new DateTime(2003, 01, 01) && x.Order.OrderDate <= currentDate)
-        //        .GroupBy(x => new { x.Employee.EmployeeNumber, x.Employee.LastName, x.Employee.FirstName })
-        //        .Select(group => new
-        //        {
-        //            EmployeeNumber = group.Key.EmployeeNumber,
-        //            LastName = group.Key.LastName,
-        //            FirstName = group.Key.FirstName,
-        //            TotalSales = group.Sum(x => x.QuantityOrdered)
-        //        })
-        //        .OrderByDescending(x => x.TotalSales)
-        //        .FirstOrDefault();
-
-        //    return query;
-        //}
-
         public List<Object> ListCustomersCredit()
         {
             var query = dbContext.Customers
@@ -551,7 +520,6 @@ namespace CODEFIRST_JD_FM.DAO
                     CustomerNumber = customersEmployee.Customer.customerNumber,
                     CustomerName = customersEmployee.Customer.customerName
                 })
-                .Take(25)
                 .ToList<Object>();
 
             return query;
@@ -625,5 +593,6 @@ namespace CODEFIRST_JD_FM.DAO
 
             return query;
         }
+
     }
 }
